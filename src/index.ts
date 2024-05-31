@@ -17,10 +17,13 @@ const runner = createCustomRunner<OssRunnerOptions>(
     initEnv(options);
 
     const client = new OSS({
-      region: process.env.NXCACHE_ALI_OSS_REGION,
-      accessKeyId: process.env.NXCACHE_ALI_OSS_ACCESS_KEY_SECRET ?? "",
-      accessKeySecret: process.env.NXCACHE_ALI_OSS_ACCESS_KEY_SECRET ?? "",
-      bucket: process.env.NXCACHE_ALI_OSS_BUCKET,
+      region: process.env.NXCACHE_ALI_OSS_REGION ?? options.region,
+      accessKeyId:
+        process.env.NXCACHE_ALI_OSS_ACCESS_KEY ?? options.accessKeyId,
+      accessKeySecret:
+        process.env.NXCACHE_ALI_OSS_ACCESS_KEY_SECRET ??
+        options.accessKeySecret,
+      bucket: process.env.NXCACHE_ALI_OSS_BUCKET ?? options.bucket,
     });
 
     return {
