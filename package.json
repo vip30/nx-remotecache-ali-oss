@@ -1,0 +1,42 @@
+{
+  "name": "nx-remotecache-ali-oss",
+  "version": "19.0.0",
+  "description": "Remote caching for @nrwl/nx using AliCloud Object Storage",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "scripts": {
+    "build": "rm -rf dist && tsc && cp package.json dist/package.json && cp README.md dist/README.md",
+    "release": "yarn run build && cd dist && yarn publish && cd .."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vip30/nx-remotecache-ali-oss"
+  },
+  "keywords": [
+    "nx",
+    "remote",
+    "cache",
+    "remotecache",
+    "ali-oss",
+    "object storage",
+    "storage",
+    "typescript"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/vip30/nx-remotecache-ali-oss",
+  "devDependencies": {
+    "nx": "19.1.1",
+    "@types/yargs": "^17.0.32",
+    "@types/node": "^20.12.13",
+    "typescript": "^5.4.5",
+    "@types/ali-oss": "^6.16.11",
+    "prettier": "^3.2.5"
+  },
+  "dependencies": {
+    "ali-oss": "^6.20.0",
+    "nx-remotecache-custom": "^19.0.0"
+  },
+  "peerDependencies": {
+    "nx": "^19.0.0"
+  }
+}
