@@ -1,6 +1,6 @@
 {
   "name": "nx-remotecache-ali-oss",
-  "version": "19.0.0",
+  "version": "19.0.1",
   "description": "Remote caching for @nrwl/nx using AliCloud Object Storage",
   "main": "index.js",
   "typings": "index.d.ts",
