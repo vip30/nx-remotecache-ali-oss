@@ -28,6 +28,7 @@ You can configure the package using environment variables or the `nx.json` file.
 | Access Secret Key | Use together with Account Key for AliCloud Credentials Authentication   | `NXCACHE_ALI_OSS_ACCESS_KEY_SECRET` | `accessKeySecret` |
 | Bucket            | Required. Specify which container should be used for storing the cache. | `NXCACHE_ALI_OSS_BUCKET`            | `bucket`          |
 | Region            | Optional. Specify the location of the storage e.g. "us-west-1".         | `NXCACHE_ALI_OSS_REGION`            | `region`          |
+| FilePrefix        | Optional. Adding file prefix before the filename.                       | `NXCACHE_ALI_OSS_FILE_PREFIX`       | `filePrefix`      |
 
 ## Usage
 
@@ -43,6 +44,7 @@ You can use this package as the default task runner in your `nx.json` file:
         "accessKeySecret": "your-secret-key",
         "bucket": "your-bucket",
         "region": "your-region", // optional
+        "filePrefix": "cache", // optional
         "cacheableOperations": ["build", "test", "lint", "e2e"]
       }
     }

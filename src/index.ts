@@ -10,6 +10,7 @@ interface OssRunnerOptions {
   accessKeySecret: string;
   bucket: string;
   region: string;
+  filePrefix: string;
 }
 
 const runner = createCustomRunner<OssRunnerOptions>(
@@ -26,21 +27,30 @@ const runner = createCustomRunner<OssRunnerOptions>(
       bucket: process.env.NXCACHE_ALI_OSS_BUCKET ?? options.bucket,
     });
 
+    const getFilename = (filename: string) => {
+      const filePrefix =
+        process.env.NXCACHE_ALI_OSS_FILE_PREFIX ?? options.filePrefix;
+
+      if (!filePrefix) return filename;
+      return `${filePrefix}/${filename}`;
+    };
+
     return {
       name: "Ali Object Storage",
       fileExists: async (filename) => {
         try {
-          const result = await client.head(filename);
+          const result = await client.head(getFilename(filename));
           return !!result;
         } catch (_) {
           return false;
         }
       },
       retrieveFile: async (filename) => {
-        const response = await client.getStream(filename);
+        const response = await client.getStream(getFilename(filename));
         return response.stream;
       },
-      storeFile: (filename, stream) => client.put(filename, stream),
+      storeFile: (filename, stream) =>
+        client.put(getFilename(filename), stream),
     };
   },
 );
